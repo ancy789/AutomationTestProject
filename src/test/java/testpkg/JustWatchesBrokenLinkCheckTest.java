@@ -18,27 +18,27 @@ public class JustWatchesBrokenLinkCheckTest extends BaseClass {
 	{
 	  List<WebElement> li=driver.findElements(By.tagName("a"));
 	  System.out.println("No of links in justwatches="+li.size()); //No of links in FB
-	  for(WebElement link:li)
+	  for(WebElement links:li)
 	  {   
-		  String links=link.getAttribute("href");
-		  verifyLink(links);
+		  String link=links.getAttribute("href");
+		  verifyLink(link);
 		  
 	  }
 
     }
-	private void verifyLink(String links) {   //method creation of above
+	private void verifyLink(String link) {   //method creation of above
 		try
 		{
-			URL u=new URL(links); //links is the constructor
+			URL u=new URL(link); //links is the constructor
 			HttpURLConnection con=(HttpURLConnection)u.openConnection();    //HttpURLConnection is the subclass of URL
 			con.connect();
 			if(con.getResponseCode()==	200)
 			{
-				System.out.println("200 valid-"+links);
+				System.out.println("200 valid-"+link);
 			}
 			else if(con.getResponseCode()==404)
 			{
-				System.out.println("404 responsecode-"+links);
+				System.out.println("404 responsecode-"+link);
 			}
 		}
 			catch(Exception e)
